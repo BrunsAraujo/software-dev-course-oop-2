@@ -48,9 +48,13 @@ public class LemonadeStand {
         this.sugar += sugar;
         this.ice += ice;
 
-        double cost = (lemons * pricePerLemon) + (sugar * pricePerSugar) + (ice * pricePerIce);
+        double cost = (lemons * pricePerLemon) +
+                (sugar * pricePerSugar) +
+                (ice * pricePerIce);
+
         money -= cost;
     }
+
 
     public boolean sellLemonade() {
         Lemonade lemonade = new Lemonade();
@@ -74,6 +78,8 @@ public class LemonadeStand {
             return false;
         }
     }
+
+
     public boolean sellLemonade(int discountPercent) {
         Lemonade lemonade = new Lemonade(); // default lemonade
 
@@ -89,7 +95,10 @@ public class LemonadeStand {
 
 
     private Lemonade tryMakingLemonade(Lemonade lemonade) {
-        if (sugar >= lemonade.getSugar() && ice >= lemonade.getIce() && lemons >= lemonade.getLemons()) {
+        if (sugar >= lemonade.getSugar() &&
+                ice >= lemonade.getIce() &&
+                lemons >= lemonade.getLemons()) {
+
             sugar -= lemonade.getSugar();
             ice -= lemonade.getIce();
             lemons -= lemonade.getLemons();
@@ -98,6 +107,7 @@ public class LemonadeStand {
             return null;
         }
     }
+
 
     private double calculateSale(Lemonade lemonade) {
         return (lemonade.getSugar() * pricePerSugar) +
