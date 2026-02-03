@@ -7,6 +7,7 @@ public class Main {
     private final static LemonadeStand lemonadeStand = new LemonadeStand();
 
     public static void main(String[] args) {
+
         System.out.println("Hello world!");
     }
 
@@ -21,6 +22,8 @@ public class Main {
             System.out.println("4. Display Money");
             System.out.println("5. Buy Supplies");
             System.out.println("6. Exit");
+            System.out.println("7. Enter Discounted Sale");
+
 
             String choice = scanner.nextLine();
 
@@ -37,6 +40,8 @@ public class Main {
             } else if (choice.equals("6")) {
                 System.out.println("Goodbye!");
                 break;
+            } else if (choice.equals("7")) {
+                enterDiscountedSale();
             } else {
                 System.out.println("Invalid choice. Please try again.");
             }
@@ -78,6 +83,21 @@ public class Main {
             }
         }
     }
+    public static void enterDiscountedSale() {
+        System.out.println("Enter discount percentage:");
+        int discount = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Enter number of lemonades to sell:");
+        int num = Integer.parseInt(scanner.nextLine());
+
+        for (int i = 0; i < num; i++) {
+            if (lemonadeStand.sellLemonade(discount)) {
+                System.out.println("Discounted lemonade sold!");
+            } else {
+                System.out.println("Not enough supplies to sell lemonade.");
+            }
+        }
+    }
 
     public static void displayInventory() {
         System.out.println("Lemons: " + lemonadeStand.getLemons());
@@ -86,6 +106,7 @@ public class Main {
     }
 
     public static void displayMoney() {
+
         System.out.println("Money: $" + lemonadeStand.getMoney());
     }
 
